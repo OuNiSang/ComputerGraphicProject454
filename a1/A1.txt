@@ -1,0 +1,132 @@
+CISC/CMPE 454 Assignment 1 - Centipede
+
+You will implement parts of the Atari Centipede game by extending the
+skeleton code provided in this directory.
+
+Compile the code
+----------------
+
+On Linux:
+
+  Go to the linux directory.
+  Execute make
+
+  If this fails, you may need to install the glfw library like this:
+  sudo apt-get install libglfw3-dev
+
+On Windows with Visual Studio:
+
+  Click on a1.vcxproj
+  Press F7.
+
+On Mac:
+
+  Go to the macos directory.
+  Execute make
+
+  If this fails, you may need to install gcc and glfw by following the
+  instructions in the README.txt file in the macos directory.
+
+Run the code
+------------
+
+Run the code and verify that a window pops up with a the Centipede
+world.  On Linux and MacOS this is done by typing ./centipede in the
+terminal window.
+
+Read the code
+-------------
+
+Read *all* of the code to get a general understanding of it.  This
+should take several hours and will help a great deal later on.
+
+Modify the code
+---------------
+
+All modifications are done in places with a comment saying "YOUR CODE
+HERE":
+
+1. [1 mark] Modify World::playerMove() to convert mouse coordinates to world
+   coordinates, which should permit you to move the player.
+
+2. [5 marks] Modify mushroom.h and mushroom.cpp to draw mushrooms like
+   those in the real game.  You should see a more realistic game once
+   this is done.
+
+3. [1 mark] Modify World::findClosestMushroomAhead() to compute
+   'distAlongLine' and 'distPerpToLine'.  The mushroom position is
+   projected perpendicularly onto the line starting at 'pos' in
+   direction 'dir'.  'distAlongLine' is the distance of that
+   projection from 'pos' and 'distPerpToLine' is the distance of the
+   mushroom position from the line.  DO NOT RELY ON THE DIRECTION
+   BEING HORIZONTAL OR VERTICAL.  Once you get this working, the darts
+   that your player sends will damage mushrooms.  (If you send four
+   darts at the same mushroom, it should disappear.)
+
+4. [1 marks] Apply a similar change to the 'distAlongLine' and
+   'distPerpToLine' in World::updateState().  Once that's working,
+   your darts will be able to hit the centipede.
+
+5. [3 marks] Further modify mushroom.h and mushroom.cpp to draw the
+   mushroom with the appropriate amount of damage.  You can choose how
+   to damaged mushrooms should appear.  DO THIS BY HAVING SOME
+   BACKGROUND (BLACK) GEOMETRY THAT GRADUALLY OVERLAPS THE MUSHROOM
+   FROM BELOW AS THE MUSHROOM BECOMES INCREASINGLY DAMAGED.  Do not
+   have different models of the mushroom for the different levels of
+   damage.
+
+6. [10 marks] Add a flea or a spider that behave as they did in the
+   original game.  You'll have to look up online at some documentation
+   and videos to see how they behave.  A flea moves downward leaving
+   some mushrooms in its wake, while a spider moves sometimes
+   diagonally and sometimes up-and-down.  If either hits the player,
+   the player dies.  You'll need to add geometry, but the geometry
+   does not have to be animated as it was in the original game
+   (although you may do that if you wish).  You'll need to detect when
+   the player dies.  You'll need to allow the player to shoot darts at
+   the flea or spider and gain points if the dart hits.  
+
+   This is a lot of work.  You may add files spider.h and spider.cpp
+   or flea.h and flea.cpp.  Part of this mark will be for how good
+   your geometry and animation is.
+
+
+DO NOT add any code that is specific to a particular operating system.
+If you do so, you code might not compile on the TA's machine and will
+not be marked.
+
+DO NOT add any more files, other than the two spider files or two flea
+files.
+
+
+Submit the code
+---------------
+
+Create a NEW DIRECTORY called 'a1'.
+
+COPY ONLY THESE FILES into that directory:
+
+   *.cpp
+   *.h
+   README.txt   
+
+The README.txt must contain the names, emails, netIDs of each person,
+and *may* contain comments you have for the TA, such as a description
+of extra modifications you made.
+
+Do not include other files and directories.  In particular, DO NOT
+INCLUDE THESE: .vs A1.txt a1.sln a1.vcxproj a1.vcxproj.filters glad
+include lib32 lib64 libglfw.so ll resource.h .
+
+If you include ANY other files, including the ones listed directly
+above, you will LOSE 1 MARK!  If your zip archive does not contain
+everything in a directory called 'a1', you will LOSE 1 MARK!
+
+Your archive should be under 500 KB.  If it's larger, you've likely
+included extra files, especially a Debug or .vs direction inside the
+windows directory.
+
+Create a zip archive of that directory, named 'a1.zip'.  If you use a
+different name, you WILL LOSE 1 MARK!
+
+Submit the zip archive on OnQ.

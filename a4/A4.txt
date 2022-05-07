@@ -1,0 +1,46 @@
+CISC/CMPE 454 Assignment 4
+
+Due Friday, April 8 at noon
+
+In this assignment, you will implement transparency and caustic photon
+maps in a raytracer.  You may work in groups of two.  Graduate
+students must work individually.
+
+0. Get the code compiling.  Then run the code using an argument of
+
+     ../worlds/basic.txt
+
+   for a basic scene.  Press '?' in the window to get a list of UI
+   options printed in the terminal.  Play around with the program.
+   Move the viewpoint.  Get the program to show you the rays it's
+   tracing.  Try the other scenes in the 'worlds' directory.
+
+   Read and understand the code in scene.cpp and photonmap.cpp.
+
+1. Implement transparency where you see "YOUR CODE HERE" and a comment
+   about transparency.  You need transparency working completely
+   before starting photon maps.
+
+2. Implement photon maps where you see "YOUR CODE HERE" and a comment
+   about photon maps.
+
+
+To Hand In
+
+  Make a directory called 'a4'.  In that directory include
+
+    - scene.cpp, scene.h, photonmap.cpp, photonmap.h
+
+    - a README.txt file with your name(s) and netID(s).
+
+    - two screen captured images of your program output, showing
+      working transparency and working photon maps from your own code.
+
+    - DO NOT INCLUDE ANY OTHER FILES.  YOUR a4 DIRECTORY SHOULD
+      CONTAIN EXACTLY 7 FILES.  YOU WILL LOSE MARKS OTHERWISE.
+
+  Create a ZIP archive of the a4 directory and upload it to OnQ.
+
+  IN GROUPS OF TWO, ONLY ONE PERSON SHOULD UPLOAD THE ASSIGNMENT.  YOU
+  WILL LOSE MARKS IF BOTH OF YOUR SUBMIT THE ASSIGNMENT.
+

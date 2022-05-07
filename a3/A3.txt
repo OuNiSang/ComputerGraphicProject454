@@ -1,0 +1,96 @@
+CISC/CMPE 454 Assignment 3
+Due Monday Mar 28 at noon
+
+In this assignment, you will implement parts of a volume renderer.
+
+You should read and understand ALL of the lecture notes on volume
+rendering before starting this assignment.
+
+0. Get the code compiling.  Then run the code using an argument of
+
+     ../data/Bucky.pvm
+
+   for the buckyball volume.  This is a very small, very coarse volume
+   that is good for debugging because it loads quickly.  Initially,
+   you will see only a green wireframe outline.  Move the viewpoint by
+   dragging with the left mouse button pressed.  Zoom by dragging
+   up/down with the right mouse button pressed.  Press '?' in the
+   rendering window to see a list of other key commands.  Once your
+   own code works, you can view the other volumes in the 'data'
+   directory.
+
+1. As discussed in the notes on "GPU Volume Rendering", you need to draw
+   a cube in [0,1]x[0,1]x[0,1] in which the colour at each vertex is equal
+   to the 3D texture coordinates of the cube at that vertex.  Recall that
+   each dimension of the texture coordinates is in the range [0,1].
+
+   Modify renderCubeWithRGBCoords() in cube.cpp to do this.  Use the same
+   approach as shown in renderCubeOutline(), where the VAO is set up on
+   the first call, but not on subsequent calls.
+
+   Test your cube by running the code and pressing 'g'.  That will show
+   the gbuffer that stores the *back faces* of the cube.  Move the
+   viewpoint with the mouse.  Then press 'x' to toggle between showing
+   the front faces and the back faces.  You should see red/green/blue
+   colours as shown in the online notes.
+
+2. Read and understand the code in Volume::draw().  In particular,
+   know what uniform variables are available to your shaders.
+
+   Then start working on the 'front.frag' shader.  Everything below is
+   done in 'front.frag'.  Do these items in order.  Test each item
+   thoroughly before moving to the next item.
+
+     2a. Output the fragment's front texture coordinates as a colour.  Test
+	 this.
+
+     2b. Output the fragment's back texture coordinates as a colour.  Test
+	 this.
+
+     2c. Compute and output the SPATIAL distance between the entry and exit
+	 points for this fragment.  Test this, but you might have to scale
+	 the computed distances to put them in the range [0,1] JUST FOR
+	 TESTING PURPOSES.
+
+     2d. Compute and output the viewing direction from the fragment to the
+	 eye in the OCS.  It has to be in the OCS because the Phong lighting
+	 calculations will be done in the OCS.
+
+     2e. Build a loop that steps along the ray between the entry and exit
+	 points, accumulating light in 'Iout' as the loop steps along.
+
+	 At each step, you'll have to look up tau and the gradient
+	 from the textures (you should test this) and compute alpha.
+	 Follow the instructions in the comments in 'front.frag'.
+
+	 Depending upon the 'renderType' (one of SURFACE, DRR, or
+	 MIP), your loop will accumulate the light in different ways.
+	 So you will have different code for each of these rendering
+	 modes.  Note that SURFACE is the usual Phong calculation,
+	 which uses the gradient as described in the course notes.
+
+	 See the online course notes for more details.
+
+
+To Hand In
+
+  Make a directory called 'a3'.  In that directory include
+
+    - your modified cube.cpp file.
+
+    - your modified front.frag file.
+
+    - a README.txt file with your name(s) and netID(s).
+
+    - three screen captured images of your program output, showing
+      MIP, DRR, and SURFACE rendering of 'Engine.pvm', all taken from
+      the same viewpoint.
+
+    - DO NOT INCLUDE ANY OTHER FILES.  YOUR a3 DIRECTORY SHOULD
+      CONTAIN EXACTLY 6 FILES.  YOU WILL LOSE MARKS OTHERWISE.
+
+  Create a ZIP archive of the a3 directory and upload it to OnQ.
+
+  IN GROUPS OF TWO, ONLY ONE PERSON SHOULD UPLOAD THE ASSIGNMENT.  YOU
+  WILL LOSE MARKS IF BOTH OF YOUR SUBMIT THE ASSIGNMENT.
+
